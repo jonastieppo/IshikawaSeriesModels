@@ -4,6 +4,7 @@ Model to implement the closed solutions for wove-fibers composites obtained by I
 # %%
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib as mp
 from CLT import*
 
 class Series_Models():
@@ -151,6 +152,13 @@ Eng_const = {
 Model.DefineEngConstants(Eng_const)
 Model.WritePlateStiffness(0.4)
 # %%
+
+font = {'size'   : 15}
+
+mp.rc('font', **font)
+
+loc = 'upper left'
+
 '''
 Plotting the therma A11
 '''
@@ -170,11 +178,11 @@ nlist = [1/i for i in nlist]
 ax.plot(nlist,y1,label='$A_{11}$ upper Bound (Iso Strain)')
 ax.plot(nlist,y2,label='$A_{11}$ lower Bound (Iso Force)')
 plt.xlabel('$1/n$')
-plt.ylabel('$A_{11}$')
-plt.legend()
+plt.ylabel('$A_{11} (kg/mm)$')
+plt.legend(loc=loc)
 
 plt.savefig("A11.pdf")
-# %%
+
 '''
 Plotting the compliance coupling therm b*11
 '''
@@ -194,8 +202,8 @@ nlist = [1/i for i in nlist]
 ax.plot(nlist,y1,label='$b^*_{11}$ upper Bound (Iso Force)')
 ax.plot(nlist,y2,label='$b^*_{11}$ lower Bound (Iso Strain)')
 plt.xlabel('$1/n$')
-plt.ylabel('$b^*_{11}$')
-plt.legend()
+plt.ylabel('$b^*_{11} (kg^{-1})$')
+plt.legend(loc=loc)
 
 plt.savefig("b11.pdf")
 
